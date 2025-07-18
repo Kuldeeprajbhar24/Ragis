@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import './Login.css';
 
-export default function Login({ onLogin }) {
+export default function Login({ students = [] }) {  // default to empty array
   const [credentials, setCredentials] = useState({
     uniqueId: "",
     password: "",
@@ -18,19 +18,26 @@ export default function Login({ onLogin }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // Check if uniqueId and password are filled
-    if (!credentials.uniqueId || !credentials.password) {
+
+    if (!credentials.uniqueId.trim() || !credentials.password.trim()) {
       alert("Please fill in all fields.");
       return;
     }
 
-    // Remove the check for uniqueId and password being the same
-    // You can add your own logic to verify the uniqueId and password against your database here
+    // Check if user exists
+    const userFound = students.find(
+      (student) =>
+        student.uniqueId === credentials.uniqueId &&
+        student.password === credentials.password &&
+        (student.loginType || 'student') === credentials.loginType
+    );
 
-    // Call the onLogin function with credentials
-    onLogin(credentials);
-    navigate('/');
+    if (userFound) {
+      alert(`Welcome, ${userFound.name || 'User'}!`);
+      navigate('/'); // Redirect to Home page
+    } else {
+      alert("Invalid Unique ID or Password.");
+    }
   };
 
   return (
@@ -81,7 +88,6 @@ export default function Login({ onLogin }) {
           onChange={handleChange}
           required
         />
-
         <button type="submit">LOGIN</button>
       </form>
     </main>

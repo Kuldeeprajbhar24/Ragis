@@ -1,4 +1,3 @@
-// App.js
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SummerInternshipPortal from './Components/SummerInternshipPortal';
@@ -30,11 +29,6 @@ function App() {
     });
   };
 
-  // Handle login
-  const handleLogin = (credentials) => {
-    console.log('User logged in with:', credentials);
-  };
-
   return (
     <Router>
       <Routes>
@@ -51,7 +45,10 @@ function App() {
             />
           }
         />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route
+          path="/login"
+          element={<Login students={students} />}
+        />
       </Routes>
     </Router>
   );

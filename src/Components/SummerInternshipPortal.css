@@ -27,6 +27,7 @@ body {
   box-shadow: 0 10px 30px rgba(53, 77, 180, 0.5);
 }
 /* Welcome Section */
+
 .welcome-section {
   flex: 1;
   padding: 40px;
@@ -53,7 +54,7 @@ body {
 }
 
 .welcome-section a {
-   color: white;
+   color: red;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
