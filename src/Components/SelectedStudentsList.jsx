@@ -1,25 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./SelectedStudentsList.css";
 
-const SelectedStudentsList = ({ students }) => {
+const SelectedStudentsList = ({ students, onDelete }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [studentList, setStudentList] = useState([]);
 
-  // Update studentList when students prop changes
-  useEffect(() => {
-    setStudentList(students);
-  }, [students]);
-
-  const filteredStudents = studentList.filter(student =>
+  const filteredStudents = students.filter(student =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     student.uniqueId.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleDelete = (uniqueId) => {
-    // Confirm deletion
     if (window.confirm("Are you sure you want to delete this student?")) {
-      setStudentList(studentList.filter(student => student.uniqueId !== uniqueId));
+      onDelete(uniqueId);
     }
   };
 
@@ -42,15 +35,18 @@ const SelectedStudentsList = ({ students }) => {
 
       {filteredStudents.length > 0 ? (
         <div className="students-grid">
-          {filteredStudents.map((student, index) => (
-            <div key={index} className="student-card">
+          {filteredStudents.map((student) => (
+            <div key={student.uniqueId} className="student-card">
               <div className="student-info">
                 <h3>{student.name}</h3>
                 <p>ID: {student.uniqueId}</p>
-                <p>Email: {student.gmail}</p>
+                <p>Email: {student.email}</p>
                 <p>Phone: {student.phoneNumber}</p>
               </div>
-              <span className="status-badge">Selected</span>
+              {/* Display Admin if loginType is admin, otherwise Selected */}
+              <span className="status-badge">
+                {student.loginType === 'admin' ? 'Admin' : 'Selected'}
+              </span>
               <button onClick={() => handleDelete(student.uniqueId)} className="delete-button">Delete</button>
             </div>
           ))}

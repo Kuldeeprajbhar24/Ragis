@@ -17,11 +17,7 @@ const SummerInternshipPortal = ({ onStudentAdd }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ 
-      ...prev, 
-      [name]: value 
-    }));
-    // Clear error when user types
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -47,12 +43,10 @@ const SummerInternshipPortal = ({ onStudentAdd }) => {
     setIsSubmitting(true);
     
     if (validateForm()) {
-      // Simulate API call
       setTimeout(() => {
-        onStudentAdd(formData);
+        onStudentAdd(formData); // Add student to parent state
         alert(`Registration successful as ${formData.loginType}!`);
         setIsSubmitting(false);
-        // Reset form
         setFormData({
           name: "",
           uniqueId: "",
@@ -62,7 +56,7 @@ const SummerInternshipPortal = ({ onStudentAdd }) => {
           confirmPassword: "",
           loginType: "student"
         });
-      }, 1000);
+      }, 500);
     } else {
       setIsSubmitting(false);
     }
@@ -86,7 +80,7 @@ const SummerInternshipPortal = ({ onStudentAdd }) => {
         </h2>
         
         <form onSubmit={handleSubmit} className="login-form">
-          {/* Login Type Selection */}
+          {/* Login Type */}
           <div className="form-group">
             <label>Login Type:</label>
             <div className="login-type">
@@ -217,4 +211,5 @@ const SummerInternshipPortal = ({ onStudentAdd }) => {
     </div>
   );
 };
+
 export default SummerInternshipPortal;

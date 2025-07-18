@@ -1,4 +1,3 @@
-/* LoginPortal.css */
 
 /* General Styles */
 * {
@@ -9,7 +8,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+  background: linear-gradient(135deg, #0a0f2c, #1a2a6c, #2c3e50);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -25,14 +24,13 @@ body {
   display: flex;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(53, 77, 180, 0.5);
 }
-
 /* Welcome Section */
 .welcome-section {
   flex: 1;
   padding: 40px;
-  background: linear-gradient(145deg, #0f2027, #203a43);
+  background: linear-gradient(145deg, #135ce6, #203a43);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +39,7 @@ body {
 .welcome-section h1 {
   font-size: 2.2rem;
   margin-bottom: 30px;
-  color: #aac8ff;
+  color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   font-weight: 700;
   font-style: italic;
@@ -51,18 +49,18 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 30px;
-  color: #c0d6ff;
+   color: white;
 }
 
 .welcome-section a {
-  color: #6eb1ff;
+   color: white;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .welcome-section a:hover {
-  color: #94c5ff;
+  color: white;
   text-decoration: underline;
 }
 
@@ -70,7 +68,7 @@ body {
 .form-section {
   flex: 1;
   padding: 40px;
-  background: linear-gradient(145deg, #16222a, #1a2a40);
+  background: linear-gradient(145deg, #135ce6, #203a43);
   position: relative;
 }
 
@@ -88,7 +86,7 @@ body {
 .form-header {
   font-size: 2rem;
   margin-bottom: 30px;
-  color: #aac8ff;
+   color: white;
   font-weight: 700;
   font-style: italic;
   text-align: center;
